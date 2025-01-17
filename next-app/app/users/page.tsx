@@ -1,10 +1,26 @@
 import React from "react";
 
-const UsersPage: React.FC = () => {
+interface IUser {
+  id: number;
+  name: string;
+};
+
+const UsersPage: React.FC = async () => {
+  const response = await fetch("https://jsonplaceholder.typicode.com/users", {
+    method: "GET",
+  });
+  const users: IUser[] = await response.json();
+
   return (
     <div>
-      <h1>Users Page</h1>
-      <p>Welcome to the users page!</p>
+      <h1>Users</h1>
+      <ul>
+        {users.map((user: any) => (
+          <li key={user.id}>
+            <a href={`/users/${user.id}`}>{user.name}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
