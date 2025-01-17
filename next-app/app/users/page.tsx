@@ -8,6 +8,9 @@ interface IUser {
 const UsersPage: React.FC = async () => {
   const response = await fetch("https://jsonplaceholder.typicode.com/users", {
     method: "GET",
+    next: {
+      revalidate: 5,
+    }
   });
   const users: IUser[] = await response.json();
 

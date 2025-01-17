@@ -39,3 +39,4 @@ export default ProductCard;
 
 - Differently from what happens in the client side, we don't need `useState` and `useEffect` to handle data fetching in the server side. We can use the simply get the data from the API or whatever and pass it to the component directly, since this data will be rendered on the server side, that is, before the page is loaded.
 
+- Next commes with a built-in cache system that caches the pages for a certain amount of time. This is good because it will make the page load faster. However, if we need to disable this cache, we can use the `revalidate` property if we need the `fetch` function to be called every time the page is loaded
